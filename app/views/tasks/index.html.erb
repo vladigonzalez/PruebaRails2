@@ -1,0 +1,19 @@
+<h1>Lista de Tareas</h1>
+
+<div class="container">
+  <div class="row">
+    <% @tasks.each_slice(3) do |row| %>
+      <% row.each do |task| %>
+        <div class="col">
+          <div class="card">
+            <%= image_tag task.photo, class: 'card-img-top', size: "350x250" %>
+            <div class="body">
+            <h5> <%= task.name %> </h5>
+            <%= link_to "Listo", task_listasks_path(task), class: 'btn btn-success', method: :post %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <div class="w-100" style="margin-top:20px"> </div>
+  <% end %>
+</div>

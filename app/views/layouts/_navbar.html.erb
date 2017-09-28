@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href=" <%= root_path %> ">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<%= listasks_path %> ">Tareas Realizadas</a>
+      </li>
+      <% if user_signed_in? %>
+        <div>
+          <p class="navbar-text">  Usuario: <%= current_user.email%></p>
+        </div>
+        <div>
+          <p class="navbar-text">  Realizadas: [<%=@okeys%> / <%=@totaltask%>]</p>
+        </div>
+      <% end %>
+
+    </ul>
+
+    <% if user_signed_in? %>
+       <div class="btn btn-dark">
+         <a href="<%= destroy_user_session_path %>" data-method="DELETE">Salir</a>
+       </div>
+      <% else %>
+        <ul>
+          <li class="navbar-text"><a href="<%= new_user_session_path %>">Ingresar</a></li>
+          <li class="navbar-text"><a href="<%= new_user_registration_path %>">Registrar Usuario</a></li>
+        </ul>
+
+    <% end %>
+
+  </div>
+</nav>

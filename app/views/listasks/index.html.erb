@@ -1,0 +1,9 @@
+
+<h3>Tareas Realizadas</h3>
+<table class="table">
+  <% @listasks.each do |listask| %>
+    <tr>
+      <td><%= listask.task.name %></td>
+    </tr>
+  <% end %>
+</table>
