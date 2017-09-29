@@ -9,7 +9,17 @@
             <%= image_tag task.photo, class: 'card-img-top', size: "350x250" %>
             <div class="body">
             <h5> <%= task.name %> </h5>
-            <%= link_to "Listo", task_listasks_path(task), class: 'btn btn-success', method: :post %>
+            <% if user_signed_in? %>
+              <% if tarearealizada?(current_user,task) %>
+                <%= image_tag "https://t3.ftcdn.net/jpg/01/45/20/02/160_F_145200260_Mlts2v0PtYabB4v5dz1I8hKNCfieJidW.jpg", size: "50x50" %>
+                <%= link_to "eliminar", Listask.where(task: task).where(user: current_user).first, class: 'btn btn-danger', method: :delete %>
+                <%= link_to "detalle", task_path(task), class: 'btn btn-info' %>
+              <% else %>
+                <%= link_to "Listo", task_listasks_path(task), class: 'btn btn-success', method: :post %>
+              <% end %>
+            <% else %>
+                <%= link_to "Listo", task_listasks_path(task), class: 'btn btn-success', method: :post %>
+            <% end %>
           </div>
         </div>
       </div>

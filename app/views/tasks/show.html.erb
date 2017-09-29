@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+
+  <div class="col">
+    <div class="card">
+      <div class="body">
+        <p><strong>Tarea:</strong> <%= @task.name %></p>
+        <%= image_tag @task.photo, size: "200x150" %>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+
+<h5>usuarios que realizaron la tarea:</h5>
+  <div class="row">
+    <div class="col">
+      <table class="table">
+        <th>email</th>
+        <th>Nombre</th>
+        <th>Foto</th>
+        <th>Tarea</th>
+        <%  @listasks .each do |list| %>
+        <tr>
+          <td> <%= list.user.email %> </p> </td>
+          <td> <%= list.user.name %> </p> </td>
+          <td> <%= list.user.photo %> </p> </td>
+          <td> <%= list.task.name %> </p> </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+  
+<%= link_to "Volver", tasks_path, class: 'btn btn-info'%>

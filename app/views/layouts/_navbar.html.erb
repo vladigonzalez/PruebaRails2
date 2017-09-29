@@ -9,12 +9,15 @@
         <a class="nav-link" href="<%= listasks_path %> ">Tareas Realizadas</a>
       </li>
       <% if user_signed_in? %>
-        <div>
-          <p class="navbar-text">  Usuario: <%= current_user.email%></p>
-        </div>
-        <div>
-          <p class="navbar-text">  Realizadas: [<%=@okeys%> / <%=@totaltask%>]</p>
-        </div>
+        <li class="nav-item">
+            <p class="navbar-text">  Usuario: <%= current_user.email%></p>
+        </li>
+        <li class="nav-item">
+            <p class="navbar-text">  Nombre: <%= current_user.name %></p>
+        </li>
+        <li>
+          <p class="navbar-text">  Realizadas: [<%= @okeys %> / <%= @totaltareas %>]</p>
+        </li>
       <% end %>
 
     </ul>

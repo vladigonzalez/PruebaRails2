@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
 
   get 'listasks/create'
+  get 'listasks/show'
   #get 'tasks/index'
-  resources :tasks, only: :index do
+  resources :tasks, only: [:index, :show] do
     resources :listasks, only: :create
   end
 
-  resources :listasks, only: :index
+  resources :listasks
 
   # ruta inicial de localhost
   #http://localhost:3000

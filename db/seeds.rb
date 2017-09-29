@@ -6,6 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# ELimino tarea intermedia 
+Listask.destroy_all
+
 ## creo los usuarios
 User.destroy_all
 User.create(email: 'vladi1@gmail.com', password: '123456', password_confirmation: '123456', name: 'Vladimir 1', photo: "https://cdn4.iconfinder.com/data/icons/dragon/512/User.png")
