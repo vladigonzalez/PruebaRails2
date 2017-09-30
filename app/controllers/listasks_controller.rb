@@ -3,16 +3,13 @@ class ListasksController < ApplicationController
 
   def create
     @task = Task.find(params[:task_id])
-    @listask = Listask.create(task: @task, user: current_user)
+    # falto grabar done en true ##$W"!""
+    @listask = Listask.create(task: @task, user: current_user, done: true)
     if @listask.save
       redirect_to tasks_path, notice: 'La tarea fue realizada'
     else
       redirect_to tasks_path, alert: 'La tarea esta pendiente'
     end
-  end
-
-  def show
-    
   end
 
   def destroy

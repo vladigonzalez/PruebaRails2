@@ -13,7 +13,7 @@
 </div>
 <hr>
 
-<h5>usuarios que realizaron la tarea:</h5>
+<h3>usuarios que realizaron la tarea</h3>
   <div class="row">
     <div class="col">
       <table class="table">
@@ -25,12 +25,34 @@
         <tr>
           <td> <%= list.user.email %> </p> </td>
           <td> <%= list.user.name %> </p> </td>
-          <td> <%= list.user.photo %> </p> </td>
+          <td> <%= image_tag list.user.photo, size: "50x50" %></p> </td>
           <td> <%= list.task.name %> </p> </td>
         </tr>
         <% end %>
       </table>
     </div>
   </div>
-  
+
+  <div class="row">
+      <div class="col">
+        <h5>Ranking de los usuarios con mas tareas realizadas:</h5>
+        <table class="table">
+          <th>Posición</th>
+          <th>Foto Usuario</th>
+          <th>Nombre</th>
+          <th>Correo</th>
+          <th>Hora actividad</th>
+          <% @ranking.each.with_index(1) do |dato, i| %>
+          <tr>
+            <td> <%= i %></td>
+            <td> <%= dato.photo %> </p> </td>
+            <td> <%= dato.name %> </p> </td>
+            <td> <%= dato.email %> </p> </td>
+            <td> <%= time_ago_in_words(dato.created_at) %> </p> </td>
+          </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+
 <%= link_to "Volver", tasks_path, class: 'btn btn-info'%>
