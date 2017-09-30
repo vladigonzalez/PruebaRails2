@@ -19,11 +19,11 @@ class TasksController < ApplicationController
     ##Traigo las tareas realizadas por el usuario
     @listasks =  Listask.where(task: @task.id).where( done: true)
 
-    #ranking
-    @ranking = User.joins(:tasks, :listasks)
-               .select('users.photo, tasks.name, users.email, listasks.created_at')
-               .distinct.where("listasks.done = true and tasks.id = ?", @task.id)
-               .order('created_at ASC').limit(5)
+    ##ranking
+    #@top5 = User.joins(:tasks, :listasks)
+    #           .select('users.photo, tasks.name, users.email, listasks.created_at')
+    #           .distinct.where("listasks.done = true and tasks.id = ?", @task.id)
+    #           #.order('created_at ASC').limit(5)
   end
 
 
